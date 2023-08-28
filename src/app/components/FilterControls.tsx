@@ -17,11 +17,11 @@ export default function FilterControls({
     setPageRange,
 }: FilterControlsProps) {
     return (
-        <section className="flex items-center justify-around mb-4">
+        <section className="flex items-center justify-around mb-10">
             <div>
                 <label
                     htmlFor="default-range"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className=" mb-2 text-md font-medium text-gray-900 dark:text-white"
                 >
                     Pages
                 </label>
@@ -32,21 +32,21 @@ export default function FilterControls({
                     min="0"
                     max="1000"
                     value={pageRange}
-                    className="w-80 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                    className="w-80 h-2 ml-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                 />
                 <span className="text-gray-600 dark:text-gray-400">
                     +{pageRange}
                 </span>
             </div>
             <nav>
-                <p className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <p className="mb-2 text-sm font-medium text-gray-900 dark:text-white flex items-center justify-center">
                     Filter Genres
                 </p>
                 <select
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
                 >
-                    <option value="">Todos</option>
+                    <option value="">All</option>
                     {genres.map((genre) => (
                         <option key={genre} value={genre}>
                             {genre}

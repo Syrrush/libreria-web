@@ -7,9 +7,9 @@ export default function Modal({ isOpen, onClose, book }: { isOpen: boolean, onCl
     }
     return (
         <div className="fixed  inset-0 flex justify-self-center z-50">
-            <section className="bg-white w-[450px] h-[530px] relative flex flex-col items-center p-8 rounded-lg shadow-md max-w-md m-auto ">
+            <section className="w-[450px] h-[530px] relative flex flex-col items-center p-8 rounded-lg shadow-md max-w-md m-auto bg-slate-200 ">
                 <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onClick={onClose}>
-                    Cerrar
+                    Close
                 </button>
                 <img className="rounded-lg w-40 aspect-[9/14] object-cover" src={book.cover} alt={book.title} />
                 <h2 className=" text-black text-xl font-semibold">{book.title}</h2>

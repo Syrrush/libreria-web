@@ -7,6 +7,7 @@ import BookGrid from "./components/BookGrid";
 import ReadListSection from "./components/ReadListSection";
 import FilterControls from "./components/FilterControls";
 import { onChange, update } from './api'
+import Swal from "sweetalert2";
 
 export default function IndexClient({ books, genres }: { books: Book[], genres: Book["genre"][] }) {
   const [genre, setGenre] = useState<Book["genre"]>("");
@@ -35,12 +36,36 @@ export default function IndexClient({ books, genres }: { books: Book[], genres: 
   }, [books, genre, pageRange]);
 
   function handleBookReadList(book: Book["ISBN"]) {
-    const filteredBooks = readList.includes(book)
-      ? readList.filter((readBook) => readBook !== book)
-      : [...readList, book];
+    let updatedReadList: Book["ISBN"][];
 
-    setReadList(filteredBooks);
-    update(filteredBooks);
+    if (readList.includes(book)) {
+      updatedReadList = readList.filter((readBook) => readBook !== book);
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'Book removed from the readlist',
+        showConfirmButton: false,
+        width: 250,
+        toast: true,
+        timer: 1500
+      });
+    } else {
+      updatedReadList = [...readList, book];
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Book added to the readlist',
+        showConfirmButton: false,
+        width: 250,
+        toast: true,
+        timer: 1500
+      });
+    }
+
+    setReadList(updatedReadList);
+    update(updatedReadList);
   }
 
   useEffect(() => {
@@ -52,9 +77,8 @@ export default function IndexClient({ books, genres }: { books: Book[], genres: 
     <section>
       <article className="grid grid-cols-12 gap-4 justify-items-center ">
         <article className="col-span-9 md:col-span-8">
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-3">
             <p>Number of books: {matches.length}</p>
-            <p>Books on readlist: {readList.length}</p>
           </div>
           <FilterControls
             genre={genre}
