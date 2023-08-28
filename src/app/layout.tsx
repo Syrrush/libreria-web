@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body >
-        <main className=" px-4 grid min-h-screen m-auto grid-rows-[65px,1fr,65px] gap-4 max-w-screen-lg ">
+        <main className="px-4 grid min-h-screen m-auto grid-rows-[65px,1fr,65px] gap-4 max-w-screen-lg ">
           <nav className="flex items-center text-2xl">Holi nav</nav>
           <section>{children}</section>
           <footer className="flex items-center justify-center">Holi footer</footer>
