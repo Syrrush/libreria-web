@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Read Hub y is a web application that allows users to browse and manage their reading list. Users can view a collection of books, filter by genre and page range, add books to their reading list, and view detailed information about each book.
 
-<img height='230' src='./Landing.png'>
+<img height='230' src='./public/Landing.png'>
 
 ## Features
 
