@@ -14,6 +14,7 @@ export default function Modal({ isOpen, onClose, book }: { isOpen: boolean, onCl
                 <img className="rounded-lg w-40 aspect-[9/14] object-cover" src={book.cover} alt={book.title} />
                 <h2 className=" text-black text-xl font-semibold">{book.title}</h2>
                 <p className="text-gray-600 text-center">{book.synopsis}</p>
+                <p className="text-gray-600 text-center">{book.pages} pages</p>
                 <p className="text-gray-600">{book.genre}</p>
                 <p className="text-gray-600">{book.year}</p>
                 <p className="text-gray-600">{book.author?.name}</p>
