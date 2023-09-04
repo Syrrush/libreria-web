@@ -16,7 +16,7 @@ export default function BookGrid({
     openModal,
 }: BookGridProps) {
     return (
-        <section className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 min-w-[500px]">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {books.map((book) => (
                 <BookFigure
                     key={book.ISBN}

@@ -72,11 +72,16 @@ export default function IndexClient({ books, genres }: { books: Book[], genres: 
     const dissableEventListener = onChange(setReadList);
     return () => dissableEventListener();
   }, []);
+  const [showReadList, setShowReadList] = useState(false);
+
+  const toggleReadList = () => {
+    setShowReadList(!showReadList);
+  };
 
   return (
     <section>
-      <article className="grid grid-cols-12 gap-4 justify-items-center ">
-        <article className="col-span-9 md:col-span-8">
+      <article className="grid grid-cols-12 gap-4 justify-items-center">
+        <article className="col-span-12 sm:col-span-8 md:col-span-6 lg:col-span-9 xl:col-span-8">
           <div className="flex flex-col mb-3">
             <p>Number of books: {matches.length}</p>
           </div>
@@ -87,18 +92,30 @@ export default function IndexClient({ books, genres }: { books: Book[], genres: 
             setPageRange={setPageRange}
             genres={genres}
           />
-          <BookGrid
-            books={matches}
-            readList={readList}
-            handleBookReadList={handleBookReadList}
-            openModal={openModal}
-          />
+          {showReadList ? (
+            <ReadListSection readList={readList} books={books} handleBookReadList={handleBookReadList} />
+          ) : (
+            <BookGrid
+              books={matches}
+              readList={readList}
+              handleBookReadList={handleBookReadList}
+              openModal={openModal}
+            />
+          )}
         </article>
-        <section className="col-span-3 md:col-span-4 justify-items-center">
+        <section className="hidden sm:block col-span-3 sm:col-span-4 md:col-span-3 lg:col-span-3 xl:col-span-4">
           <ReadListSection readList={readList} books={books} handleBookReadList={handleBookReadList} />
         </section>
       </article>
       <Modal isOpen={modalIsOpen} onClose={closeModal} book={selectedBook} />
+      <div className="fixed bottom-4 right-4 sm:hidden">
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={toggleReadList}
+        >
+          {showReadList ? 'Show Books' : 'Show Read List'}
+        </button>
+      </div>
     </section>
   );
 }
