@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Roboto_Slab, EB_Garamond } from 'next/font/google'
+import Footer from './footer'
 
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto_Slab({subsets: ["latin"], weight:"600"})
@@ -22,7 +23,7 @@ export default function RootLayout({
           <nav className="flex items-center text-2xl">
             <h1 className={roboto.className}>Read Hub</h1></nav>
           <section className={garamond.className}>{children}</section>
-          <footer className="flex items-center justify-center">Holi footer</footer>
+          <footer><Footer/></footer>
         </main>
       </body>
     </html>
